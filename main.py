@@ -67,6 +67,7 @@ def main(page: ft.page):
             )
         )
 
+
         if page.route == "/main menu":
             page.views.append(
                 ft.View(route="/main menu", controls=[
