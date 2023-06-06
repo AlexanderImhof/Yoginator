@@ -102,6 +102,7 @@ def main(page: ft.page):
                 )
             )
 
+
         if page.route == "/c1": #catalysis 1
             page.views.append(
                 ft.View(route="/c1", controls=[
