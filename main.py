@@ -52,8 +52,6 @@ def main(page: ft.page):
             )
         )
 
-
-
         if page.route =="/store":
             page.views.append(
                 ft.View("/store",
