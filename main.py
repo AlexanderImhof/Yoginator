@@ -41,7 +41,7 @@ def main(page: ft.page):
                 ft.Column(controls=[
                       ft.Text(),
                       ft.TextField(label="username", border_radius=10, content_padding=20 , width=400, autofocus=True, bgcolor=bgc2, focused_bgcolor=bgc3),
-                      ft.TextField(label="password", border_radius=10, content_padding=20 , width= 400, bgcolor=bgc2, focused_bgcolor=bgc3),
+                      ft.TextField(label="password", border_radius=10, content_padding=20 , width= 400, bgcolor=bgc2, focused_bgcolor=bgc3, password=True, can_reveal_password=True),
                       ft.ElevatedButton(text="Sign in", icon=ft.icons.LOGIN, bgcolor=bgc3 , on_click=lambda _:page.go("/main menu")),
                       ft.Divider(height=300, thickness=0, color=bgc3),
                       ft.Row(controls=[
@@ -106,7 +106,18 @@ def main(page: ft.page):
         if page.route == "/c1": #catalysis 1
             page.views.append(
                 ft.View(route="/c1", controls=[
-                       ft.ElevatedButton(text="flush", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                    ft.AppBar(leading=ft.Icon(ft.icons.SCIENCE_OUTLINED), center_title=True, leading_width=40,
+                              title=ft.Text("choose mode"), bgcolor=bgc3,
+                              actions=[
+                                  ft.PopupMenuButton(items=[
+                                      ft.PopupMenuItem(text="help", on_click=open_manual()),
+                                      ft.PopupMenuItem(text="website", on_click=website()),
+                                      ft.PopupMenuItem(text="log_out", on_click=lambda _: page.go("/"))
+                                  ]
+                                  )
+                              ]
+                    ),
+                    ft.ElevatedButton(text="flush", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
                                       style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
                                                                   ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
                                                                   ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
@@ -114,9 +125,9 @@ def main(page: ft.page):
                                       on_click=lambda _: page.go("/f1")
                                       ),
                                     ],
-                        vertical_alignment=ft.MainAxisAlignment.CENTER,
-                        horizontal_alignment=ft.CrossAxisAlignment.CENTER
-                        )
+                    vertical_alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                )
             )
 
         if page.route == "/pc1": #processing catalysis 1
