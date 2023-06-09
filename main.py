@@ -3,6 +3,7 @@ import flet as ft
 def main(page: ft.page):
     page.title = "Yoginator"
     page.window_center()
+    page.scroll = "always"
     page.update()
 
     font = str("Arial")
@@ -117,12 +118,26 @@ def main(page: ft.page):
                                   )
                               ]
                     ),
-                    ft.ElevatedButton(text="flush", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                    ft.ElevatedButton(text="A) 3 ingredients", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
                                       style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
                                                                   ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
                                                                   ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
-                                      tooltip="flushing the equipment in contact with liquids",
-                                      on_click=lambda _: page.go("/f1")
+                                      tooltip="catalyst, solvent and substrate",
+                                      on_click=lambda _: page.go("/c1A")
+                                      ),
+                    ft.ElevatedButton(text="B) 4 ingredients", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                                      style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                      tooltip="catalyst, solvent, substrate and oxidant",
+                                      on_click=lambda _: page.go("/c1B")
+                                      ),
+                    ft.ElevatedButton(text="C) 5 ingredients", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                                      style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                      tooltip="catalyst, solvent, substrate, oxidant and additive",
+                                      on_click=lambda _: page.go("/c1C")
                                       ),
                                     ],
                     vertical_alignment=ft.MainAxisAlignment.CENTER,
@@ -138,7 +153,7 @@ def main(page: ft.page):
                                                                   ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
                                                                   ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
                                       tooltip="perform a classical catalysis with catalyst, substrate, solvent, additives and a good portion of luck ;)",
-                                      on_click=lambda _: page.go("/")),
+                                      on_click=lambda _: page.go("/c1")),
                     ft.ElevatedButton(text="reprocessing catalysis", width=400, height=50,
                                       bgcolor=ft.colors.TEAL_ACCENT_700,
                                       style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
@@ -173,6 +188,64 @@ def main(page: ft.page):
                 ],
                         vertical_alignment=ft.MainAxisAlignment.CENTER,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                        )
+            )
+
+        if page.route == "/c1A": #catalysis methode 1, 3 ingredients
+            page.views.append(
+                ft.View(route="/C1A", controls=[
+                    ft.Column(controls=[
+                        ft.DataTable(rows=[], columns=[]),
+                        ft.Row(controls=[
+                             ft.ElevatedButton(text="add time", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                                      style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                      tooltip="add another probe for another reaction time",
+                                      on_click=lambda _: page.go("/")),
+                            ft.ElevatedButton(text="run catalysis", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                                      style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                      tooltip="start catalysis",
+                                      on_click=lambda _: page.go("/"))])]
+                    ),
+
+                                        ],
+                        vertical_alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                        )
+            )
+
+            if page.route == "/c1B":  # processing catalysis 1
+                page.views.append(
+                    ft.View(route="/c1B", controls=[
+                        ft.ElevatedButton(text="perform catalysis", width=400, height=50,
+                                          bgcolor=ft.colors.TEAL_ACCENT_700,
+                                          style=ft.ButtonStyle(
+                                              color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                     ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                     ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                          tooltip="perform a classical catalysis with catalyst, substrate, solvent, additives and a good portion of luck ;)",
+                                          on_click=lambda _: page.go("/")),
+                        ],
+                        vertical_alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                            )
+                )
+
+        if page.route == "/c1C": #processing catalysis 1
+            page.views.append(
+                ft.View(route="/c1C", controls=[
+                    ft.ElevatedButton(text="perform catalysis", width=400, height=50, bgcolor=ft.colors.TEAL_ACCENT_700,
+                                      style=ft.ButtonStyle(color={ft.MaterialState.HOVERED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.FOCUSED: ft.colors.TEAL_ACCENT_400,
+                                                                  ft.MaterialState.DEFAULT: ft.colors.TEAL_ACCENT_100}),
+                                      tooltip="perform a classical catalysis with catalyst, substrate, solvent, additives and a good portion of luck ;)",
+                                      on_click=lambda _: page.go("/")),
+                                    ],
+                    vertical_alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER
                         )
             )
 
